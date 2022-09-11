@@ -17,28 +17,28 @@ def hbnb():
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def show_c(text):
-    """ display C  followed by the value of the text variable"""
-    return "C {}".format(text).replace('_', ' ')
+def c(text):
+    """Route /c"""
+    return "C %s" % text.replace("_", " ")
 
 
-@app.route('/python', strict_slashes=False)
+@app.route('/python',
+           defaults={"text": "is cool"}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def show_python(text='is cool'):
-    """display Python , followed by the value of the text variable
-    default value of text is 'is cool'"""
-    return 'Python {}'.format(text).replace('_', ' ')
+def python(text):
+    """Route /python"""
+    return "Python %s" % text.replace("_", " ")
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def show_num(n):
-    """ display n is a number only if n is an integer """
-    return '{:d} is a number'.format(n)
+def number(n):
+    """Route /number"""
+    return "%d is a number" % n
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
-def show_template(n):
-    """ display a HTML page only if n is an integer """
+def number_template(n):
+    """Route /number_template"""
     return render_template('5-number.html', n=n)
 
 
