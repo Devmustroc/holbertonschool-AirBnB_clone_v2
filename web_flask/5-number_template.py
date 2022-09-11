@@ -36,12 +36,13 @@ def number(n):
     return "%d is a number" % n
 
 
-@app.route('/number_template/<int:n>', strict_slashes=False)
-def number_template(n):
-    """Route /number_template"""
+@app.route('/number_template/<int:n>')
+def render_num(n):
+    """ Returns HTML page only if n is int when app.route queried,
+    """
     return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
     """application must be listening on"""
-    app.run(host='0.0.0.0', port='5000')
+    app.run(host='0.0.0.0')
